@@ -1,0 +1,36 @@
+{% extends 'menu/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="menu-container">
+    {% for category in categories %}
+    <section class="category {% if category.image_position == 'right' %}image-right{% else %}image-left{% endif %}">
+        {% if category.image %}
+        <div class="category-image">
+            <img src="{{ category.image.url }}" alt="{{ category.name }}" class="category-img">
+        </div>
+        {% endif %}
+        
+        <div class="category-content">
+            <h2>{{ category.name }}</h2>
+            <div class="items">
+                {% for item in category.menu_items.all %}
+                <div class="item {% if item.is_special %}special{% endif %}">
+                    <div class="item-info">
+                        <span class="item-name">
+                            {{ item.name }}
+                            {% if item.weight %}<span class="item-weight">{{ item.weight }}</span>{% endif %}
+                        </span>
+                        {% if item.description %}
+                        <p class="item-description">{{ item.description }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="item-price">{{ item.price }} br</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+[
+    {
+      "model": "menu.category",
+      "pk": 1,
+      "fields": {
+        "name": "Coffee"
+      }
+    },
+    {
+      "model": "menu.category",
+      "pk": 2,
+      "fields": {
+        "name": "Desserts"
+      }
+    },
+    {
+      "model": "menu.menuitem",
+      "pk": 1,
+      "fields": {
+        "name": "Cappuccino",
+        "description": "Espresso with steamed milk",
+        "price": "3.99",
+        "category": 1,
+        "is_available": true
+      }
+    }
+  ]
