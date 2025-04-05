@@ -1,15 +1,11 @@
 #!/bin/bash
 # Create writable directories
 mkdir -p /tmp/media
-chmod -R 777 /tmp
-# Install Python dependencies
-pip install -r requirements.txt
+chmod 777 /tmp
+chmod 777 /tmp/media
 
-# Collect static files
-python manage.py collectstatic --noinput
-
-# Run database migrations (if using SQLite or other DB)
+# Apply database migrations
 python manage.py migrate
 
-# Optional: Create superuser (remove in production)
-# echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'password') if not User.objects.filter(username='admin').exists() else None" | python manage.py shell
+# Create superuser (remove in production)
+echo "from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.create_superuser('admin', 'admin@example.com', 'password') if not User.objects.filter(username='admin').exists() else None" | python manage.py shell
