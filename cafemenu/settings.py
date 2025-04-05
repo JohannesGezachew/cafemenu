@@ -90,7 +90,7 @@ USE_TZ = True
 
 # Media files (Vercel compatible)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/tmp/media' if 'VERCEL' in os.environ else BASE_DIR / 'media'
 
 # Static files (Whitenoise optimized)
 STATIC_URL = '/static/'
