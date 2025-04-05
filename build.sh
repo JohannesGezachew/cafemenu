@@ -1,5 +1,7 @@
 #!/bin/bash
-
+# Create writable directories
+mkdir -p /tmp/media
+chmod -R 777 /tmp
 # Install Python dependencies
 pip install -r requirements.txt
 
