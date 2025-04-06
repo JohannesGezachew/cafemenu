@@ -14,7 +14,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-dev-key')  # Use env var in production
 DEBUG = True  
 ALLOWED_HOSTS = [
-    '.vercel.app', 
+    '.vercel.app',
+    'digital-cafe-menu.onrender.com',
     '.now.sh',
     '127.0.0.1',
     'localhost'
