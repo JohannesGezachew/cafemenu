@@ -18,8 +18,14 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include  # <-- Add this line
+from django.http import HttpResponse
+
+
+def favicon_view(request):
+    return HttpResponse(status=204) 
 
 urlpatterns = [
+    path('favicon.ico', favicon_view), 
     path('admin/', admin.site.urls),
     path('', include('menu.urls')),
 ] 
