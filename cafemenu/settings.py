@@ -6,6 +6,8 @@ Optimized for Vercel + Neon PostgreSQL
 from pathlib import Path
 import os
 import dj_database_url
+from decouple import config
+from dotenv import load_dotenv
 
 # Build paths
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -91,7 +95,17 @@ USE_TZ = True
 
 # Media files (Vercel compatible)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/tmp/media' if 'VERCEL' in os.environ else BASE_DIR / 'media'
+MEDIA_ROOT = ''
+
+
+CLOUDINARY_STORAGE = {
+     'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+}
+
+# Set Cloudinary as your default file storage
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Static files (Whitenoise optimized)
 STATIC_URL = '/static/'
