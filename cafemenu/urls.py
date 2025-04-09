@@ -19,6 +19,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include  # <-- Add this line
 from django.http import HttpResponse
+from django.http import JsonResponse
+from cloudinary import uploader
 
 
 def favicon_view(request):
@@ -32,3 +34,13 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+def test_upload(request):
+    try:
+        result = uploader.upload(
+            "https://res.cloudinary.com/demo/image/upload/sample.jpg",
+            folder="render_test"
+        )
+        return JsonResponse({"status": "success", "url": result['secure_url']})
+    except Exception as e:
+        return JsonResponse({"status": "error", "message": str(e)}, status=500)

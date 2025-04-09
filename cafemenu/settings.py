@@ -102,16 +102,27 @@ MEDIA_URL = '/media/'
 load_dotenv(os.path.join(BASE_DIR, '.env'))
 # Cloudinary configuration
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),  # Matches Render's key
     'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
     'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
-    'SECURE': True,
-    'EXCLUDE_DELETE_ORPHANED_MEDIA': True
+    'SECURE': True,  # Enforce HTTPS
+    'EXCLUDE_DELETE_ORPHANED_MEDIA': True,  # Prevent accidental deletions
+    'QUALITY': 'auto:good'  # Optimize images
 }
 
 # File storage settings
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
+# Add to settings.py to confirm config on startup
+try:
+    import cloudinary
+    cloudinary.config(
+        cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
+        api_key=os.getenv('CLOUDINARY_API_KEY'),
+        api_secret=os.getenv('CLOUDINARY_API_SECRET')
+    )
+    print("✅ Cloudinary configured successfully")
+except Exception as e:
+    print(f"❌ Cloudinary error: {str(e)}")
 # Static files (Whitenoise optimized)
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
