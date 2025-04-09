@@ -12,6 +12,7 @@ from dotenv import load_dotenv
 # Build paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
 # Security
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-dev-key')  # Use env var in production
 DEBUG = True  
@@ -32,9 +33,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
-    'cloudinary_storage',
+    
 ]
 
 MIDDLEWARE = [
@@ -46,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
 ]
 
 ROOT_URLCONF = 'cafemenu.urls'
@@ -95,16 +98,18 @@ USE_TZ = True
 
 # Media files (Vercel compatible)
 MEDIA_URL = '/media/'
-MEDIA_ROOT = ''
-
-
+#MEDIA_ROOT = ''
+load_dotenv(os.path.join(BASE_DIR, '.env'))
+# Cloudinary configuration
 CLOUDINARY_STORAGE = {
-     'CLOUD_NAME': os.environ.get('CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
+    'CLOUD_NAME': os.getenv('CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
+    'SECURE': True,
+    'EXCLUDE_DELETE_ORPHANED_MEDIA': True
 }
 
-# Set Cloudinary as your default file storage
+# File storage settings
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Static files (Whitenoise optimized)
