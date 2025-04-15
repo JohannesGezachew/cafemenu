@@ -30,6 +30,10 @@ body {
     margin-bottom: 3px;
     text-transform: uppercase;
 }
+.menu-header h4{
+    text-align: center;
+}
+
 .menu-header h1 span {
     font-weight: 400;    
 }
