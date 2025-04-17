@@ -21,7 +21,9 @@ ALLOWED_HOSTS = [
     'digital-cafe-menu.onrender.com',
     '.now.sh',
     '127.0.0.1',
-    'localhost'
+    'localhost',
+    'ed-burgers.onrender.com'
+
 ]
 
 # Application definition
