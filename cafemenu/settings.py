@@ -15,7 +15,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Security
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-dev-key')  # Use env var in production
-DEBUG = True  
+DEBUG = False  
 ALLOWED_HOSTS = [
     '.vercel.app',
     'digital-cafe-menu.onrender.com',
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'cafemenu.wsgi.application'
 # Database Configuration (Neon PostgreSQL)
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL', 'postgresql://neondb_owner:npg_vQ6NdxbzY0su@ep-shrill-glade-a5ty35rk-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require'),
+        default=os.getenv('DATABASE_URL'),
         engine='django.db.backends.postgresql',
         conn_max_age=600,
         conn_health_checks=True,
