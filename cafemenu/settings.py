@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'cafemenu.wsgi.application'
 # Database Configuration (Neon PostgreSQL)
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL'),
+        default=config('DATABASE_URL'),
         engine='django.db.backends.postgresql',
         conn_max_age=600,
         conn_health_checks=True,
