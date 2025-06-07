@@ -23,7 +23,8 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'ed-burgers.onrender.com',
-    'everyday-burger.et'
+    'everyday-burger.et',
+    '188.245.213.109'  # VPS IP address
 ]
 
 # Application definition
