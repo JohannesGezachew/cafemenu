@@ -22,8 +22,8 @@ ALLOWED_HOSTS = [
     '.now.sh',
     '127.0.0.1',
     'localhost',
-    'ed-burgers.onrender.com'
-
+    'ed-burgers.onrender.com',
+    'everyday-burger.et'
 ]
 
 # Application definition
