@@ -7,7 +7,7 @@ set -e
 APP_NAME="cafemenu"
 APP_DIR="/var/www/$APP_NAME"
 VENV_DIR="$APP_DIR/venv"
-REPO_URL="your-repo-url"  # Replace with your repository URL
+REPO_URL="https://github.com/JohannesGezachew/cafemenu.git"  # Updated repository URL
 
 # Colors for output
 RED='\033[0;31m'
