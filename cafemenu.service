@@ -1,14 +1,14 @@
 [Unit]
-Description=Cafe Menu Django Application
+Description=Cafe Menu New Django Application
 After=network.target
 
 [Service]
 User=www-data
 Group=www-data
-WorkingDirectory=/var/www/cafemenu
-Environment="PATH=/var/www/cafemenu/venv/bin"
-EnvironmentFile=/var/www/cafemenu/.env
-ExecStart=/var/www/cafemenu/venv/bin/gunicorn --config gunicorn_config.py cafemenu.wsgi:application
+WorkingDirectory=/var/www/cafemenu-new
+Environment="PATH=/var/www/cafemenu-new/venv/bin"
+EnvironmentFile=/var/www/cafemenu-new/.env
+ExecStart=/var/www/cafemenu-new/venv/bin/gunicorn --config gunicorn_config.py cafemenu.wsgi:application
 
 [Install]
 WantedBy=multi-user.target 
