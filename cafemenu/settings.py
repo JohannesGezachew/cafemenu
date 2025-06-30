@@ -26,6 +26,11 @@ ALLOWED_HOSTS = [
     'everyday-burger.et',
     '188.245.213.109'  # VPS IP address
 ]
+# CSRF_TRUSTED_ORIGINS is used to whitelist domains that are allowed to make requests to the server.
+CSRF_TRUSTED_ORIGINS = [
+    "http://188.245.213.109",
+    "https://188.245.213.109",
+]
 
 # Application definition
 INSTALLED_APPS = [
@@ -142,5 +147,5 @@ if not DEBUG:
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
