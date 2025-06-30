@@ -24,13 +24,14 @@ ALLOWED_HOSTS = [
     'localhost',
     'ed-burgers.onrender.com',
     'everyday-burger.et',
+    'www.everyday-burger.et',
     '188.245.213.109'  # VPS IP address
 ]
 # CSRF_TRUSTED_ORIGINS is used to whitelist domains that are allowed to make requests to the server.
 CSRF_TRUSTED_ORIGINS = [
-    "http://188.245.213.109",
-    "https://188.245.213.109",
-]
+        'https://everyday-burger.et',
+        'https://www.everyday-burger.et',
+    ]
 
 # Application definition
 INSTALLED_APPS = [
